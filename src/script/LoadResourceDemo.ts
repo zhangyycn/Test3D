@@ -7,8 +7,8 @@ export default class LoadResourceDemo{
 	private pangziAnimator:Laya.Animator;
 
     constructor(){
-        this._scene =null;
-        this.sprite3D =null;
+        this._scene = null;
+        this.sprite3D = null;
         //初始化引擎
 		Laya3D.init(0, 0);
 		Laya.stage.scaleMode = Laya.Stage.SCALE_FULL;
@@ -31,7 +31,7 @@ export default class LoadResourceDemo{
 			//添加相机
 			var camera = new Laya.Camera();
 			this._scene.addChild(camera);
-			//设置相机清楚标记，使用天空
+			//设置相机清除标记，使用天空
 			camera.clearFlag = Laya.BaseCamera.CLEARFLAG_SKY;
 			//调整相机的位置
 			camera.transform.translate(new Laya.Vector3(3, 20, 47));
@@ -69,7 +69,7 @@ export default class LoadResourceDemo{
 			
 			//加载Mesh
 			Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey-LayaMonkey.lm", Laya.Handler.create(this, function(mesh) {
-				var layaMonkey = scene.addChild(new Laya.MeshSprite3D(mesh));
+				var layaMonkey = scene.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
 				layaMonkey.transform.localScale = new Laya.Vector3(4, 4, 4);
 				layaMonkey.transform.rotation = new Laya.Quaternion(0.7071068, 0, 0, -0.7071067);
 				layaMonkey.transform.translate(new Laya.Vector3(5, 3, 13));

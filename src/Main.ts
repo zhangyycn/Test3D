@@ -14,5 +14,6 @@ class Main {
         new LoadResourceDemo();
     }
 }
+
 //激活启动类
 new Main();

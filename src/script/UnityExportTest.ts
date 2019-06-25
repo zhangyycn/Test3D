@@ -61,6 +61,14 @@ export default class UnityExportTest {
         this.role.transform.localScale.setValue(0.5, 0.5, 0.5);
         //this.role.transform.rotate(new Laya.Vector3(-3.14 / 2, 0, 0));
 
+        /*
+        Laya.Sprite3D.load("res/threeDimen/skinModel/Polytope/Test.lh", Laya.Handler.create(this, function(sp) {
+            var test_role = this.scene.addChild(sp);
+            test_role.transform.localScale = new Laya.Vector3(0.5, 0.5, 0.5);
+            test_role.transform.translate(new Laya.Vector3(0, 0, 0));
+        }));
+        */
+
         //设置定时器执行,定时重复执行(基于帧率)
         Laya.timer.frameLoop(1, this, this.animate);
     }
