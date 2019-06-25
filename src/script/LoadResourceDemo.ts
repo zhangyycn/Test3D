@@ -5,6 +5,7 @@ export default class LoadResourceDemo{
 	private sprite3D:Laya.Sprite3D;
 	private pangzi:Laya.Sprite3D;
 	private pangziAnimator:Laya.Animator;
+
     constructor(){
         this._scene =null;
         this.sprite3D =null;
@@ -73,6 +74,7 @@ export default class LoadResourceDemo{
 				layaMonkey.transform.rotation = new Laya.Quaternion(0.7071068, 0, 0, -0.7071067);
 				layaMonkey.transform.translate(new Laya.Vector3(5, 3, 13));
 			}));
+			
 			//加载精灵
 			Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Handler.create(this, function(sp) {
 				var layaMonkey2 = scene.addChild(sp);
@@ -109,7 +111,8 @@ export default class LoadResourceDemo{
 			}));
 	
 		}));
-    }
+	}
+	
     //批量预加载方式
     PreloadingRes(){
         //预加载所有资源
