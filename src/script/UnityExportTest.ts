@@ -41,7 +41,7 @@ export default class UnityExportTest {
         //批量预加载资源
 		Laya.loader.create([
 			"res/threeDimen/staticModel/grid/plane.lh", 
-            "res/threeDimen/skinModel/Polytope/Test.lh"
+            "res/threeDimen/skinModel/Polytope/Polytope.lh"
 		], Laya.Handler.create(this, this.onComplete));
     }
 
@@ -55,11 +55,12 @@ export default class UnityExportTest {
         this.role = new Laya.MeshSprite3D(Laya.Loader.getRes("res/threeDimen/skinModel/Polytope/Assets/Polytope/Characters/Sources/Meshes/PT_Medieval_Female_Peasant_01_a-PT_Medieval_Female_Peasant_01.lm"));
         this.scene.addChild(this.role);
         //设置材质
-        this.role.meshRenderer.material = Laya.Loader.getRes("res/threeDimen/skinModel/Polytope/Assets/Polytope/Characters/Sources//Materials/PT_Medieval_mat.lmat");
+        this.role.meshRenderer.material = Laya.Loader.getRes("res/threeDimen/skinModel/Polytope/Assets/Polytope/Characters/Sources/Materials/PT_Medieval_mat.lmat");
 
         this.role.transform.position.setValue(0, 0, 0);
         this.role.transform.localScale.setValue(0.5, 0.5, 0.5);
         //this.role.transform.rotate(new Laya.Vector3(-3.14 / 2, 0, 0));
+
 
         /*
         Laya.Sprite3D.load("res/threeDimen/skinModel/Polytope/Test.lh", Laya.Handler.create(this, function(sp) {

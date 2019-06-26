@@ -4,15 +4,15 @@
 		"props":{
 			"name":"PT_Medieval_Female_Peasant_01_a",
 			"translate":[
-				-0.7872515,
-				0.999089,
-				-1.111301
+				0,
+				0,
+				0
 			],
 			"rotation":[
 				0,
-				-0.999896,
 				0,
-				0.01442519
+				0,
+				-1
 			],
 			"scale":[
 				1,
@@ -41,7 +41,30 @@
 						1
 					]
 				},
-				"child":[]
+				"child":[
+					{
+						"props":{
+							"name":"PT_Medieval_Female_Peasant_01",
+							"translate":[
+								0,
+								0,
+								0
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								1,
+								1,
+								1
+							]
+						},
+						"child":[]
+					}
+				]
 			},
 			{
 				"props":{
