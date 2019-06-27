@@ -7,10 +7,12 @@ import LoadResourceDemo from "./script/LoadResourceDemo"
 import AnimatorDemo from "./script/AnimatorDemo"
 import PhysicsWorld_BaseCollider from "./script/PhysicsWorld_BaseCollider"
 import HuaYing from "./script/HuaYing"
+import RockGolem from "./script/RockGolem"
+import HuoLong from "./script/HuoLong"
 
 class Main {
     constructor() {
-        new UnityExportTest();
+        //new UnityExportTest();
         //new TransformDemo();
         //new Sprite3DLoad();
         //new MaterialAnimation();
@@ -18,6 +20,8 @@ class Main {
         //new AnimatorDemo();
         //new PhysicsWorld_BaseCollider();
         //new HuaYing();
+        //new RockGolem();
+        new HuoLong();
     }
 }
 

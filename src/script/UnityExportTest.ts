@@ -3,6 +3,8 @@ export default class UnityExportTest {
     private camera: Laya.Camera;
     private directionLight: Laya.DirectionLight;
     private role: Laya.MeshSprite3D;
+    private roleAnimator: Laya.Animator;
+    private test_role: Laya.Sprite3D;
     private position:Laya.Vector3 = new Laya.Vector3(0, 0, 0);
     private rotate:Laya.Vector3 = new Laya.Vector3(0, 1, 0);
 	private scale:Laya.Vector3 = new Laya.Vector3();
@@ -41,7 +43,8 @@ export default class UnityExportTest {
         //批量预加载资源
 		Laya.loader.create([
 			"res/threeDimen/staticModel/grid/plane.lh", 
-            "res/threeDimen/skinModel/Polytope/Polytope.lh"
+            "res/threeDimen/skinModel/Polytope/Polytope.lh",
+            "res/threeDimen/skinModel/Polytope/Assets/Polytope/Characters/Sources/Meshes/PT_Medieval_Female_Peasant_01_a-PT_Medieval_Female_Peasant_01_a-PT_Medieval_Female_Peasant_01_aAvatar.lav"
 		], Laya.Handler.create(this, this.onComplete));
     }
 
@@ -51,6 +54,7 @@ export default class UnityExportTest {
         //地面接收阴影
         (grid.getChildAt(0) as Laya.MeshSprite3D).meshRenderer.receiveShadow = true;
 
+        /*
         //加载角色
         this.role = new Laya.MeshSprite3D(Laya.Loader.getRes("res/threeDimen/skinModel/Polytope/Assets/Polytope/Characters/Sources/Meshes/PT_Medieval_Female_Peasant_01_a-PT_Medieval_Female_Peasant_01.lm"));
         this.scene.addChild(this.role);
@@ -59,26 +63,47 @@ export default class UnityExportTest {
 
         this.role.transform.position.setValue(0, 0, 0);
         this.role.transform.localScale.setValue(0.5, 0.5, 0.5);
-        //this.role.transform.rotate(new Laya.Vector3(-3.14 / 2, 0, 0));
-
-
-        /*
-        Laya.Sprite3D.load("res/threeDimen/skinModel/Polytope/Test.lh", Laya.Handler.create(this, function(sp) {
-            var test_role = this.scene.addChild(sp);
-            test_role.transform.localScale = new Laya.Vector3(0.5, 0.5, 0.5);
-            test_role.transform.translate(new Laya.Vector3(0, 0, 0));
-        }));
         */
+
+        Laya.Sprite3D.load("res/threeDimen/skinModel/Polytope/Polytope.lh", Laya.Handler.create(this, function(sp) {
+            this.test_role = this.scene.addChild(sp);
+            this.test_role.transform.localScale = new Laya.Vector3(0.5, 0.5, 0.5);
+            this.test_role.transform.translate(new Laya.Vector3(0, 0, 0));
+        }));
+
+        //获取动画组件
+        this.roleAnimator = this.test_role.getChildAt(0).getComponent(Laya.Animator) as Laya.Animator;
+
+        Laya.AnimationClip.load("res/threeDimen/skinModel/Polytope/Assets/Polytope/Characters/Sources/Meshes/PT_Medieval_Female_Peasant_01_a-PT_Medieval_Female_Peasant_01_a-PT_Medieval_Female_Peasant_01_aAvatar.lav", Laya.Handler.create(this, function(aniClip:Laya.AnimationClip):void {
+        //创建动作状态
+        var state1 = new Laya.AnimatorState();
+        //动作名称
+        state1.name = "hello";
+        //动作播放起始时间
+        state1.clipStart = 0 / 581;
+        //动作播放结束时间
+        state1.clipEnd = 581 / 581;
+        //设置动作
+        state1.clip = aniClip;
+        //设置动作循环
+        state1.clip.islooping = true;
+        //为动画组件添加一个动作状态
+        this.pangziAnimator.addState(state1);
+        //播放动作
+        this.pangziAnimator.play("hello");
+    }));	
 
         //设置定时器执行,定时重复执行(基于帧率)
         Laya.timer.frameLoop(1, this, this.animate);
     }
 
     animate() {
+        /*
         this.scaleValue = Math.sin(this.scaleDelta += 0.1);
         
         this.position.y = Math.max(0, this.scaleValue / 2);;
         this.role.transform.position = this.position;
         this.role.transform.rotate(this.rotate, false, false);
+        */
     }
 }
