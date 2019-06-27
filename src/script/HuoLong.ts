@@ -6,7 +6,7 @@ export default class HuoLong {
     private animator:Laya.Animator;
     private aniControlLayer: Laya.AnimatorControllerLayer;
     private aniState: Laya.AnimatorState;
-    private actionName: string[] = ["wait", "run", "skill1", "skill2", "hurt", "die"]; 
+    private actionName: string[] = ["wait", "run", "skill1", "skill2", "hurt", "die"];
     private state: number = 0;
 
 	constructor() {
@@ -23,8 +23,10 @@ export default class HuoLong {
             this.role = this.scene.getChildByName("SJ001") as Laya.Sprite3D;
             this.animator = this.role.getComponent(Laya.Animator) as Laya.Animator;
             this.aniControlLayer = this.animator.getControllerLayer();
-
-            this.animator.getDefaultState(0).clip.islooping = true;
+            for (let i = 0; i < this.actionName.length; i++) {
+                this.aniState = this.aniControlLayer.getAnimatorState(this.actionName[i]);
+                this.aniState.clip.islooping = true;
+            }
 
             Laya.stage.on(Laya.Event.CLICK, this, this.onClick);
         }));
@@ -32,9 +34,6 @@ export default class HuoLong {
 
     onClick() {
         this.state = ++this.state > 5 ? 0 : this.state;
-
-        this.aniState = this.aniControlLayer.getAnimatorState(this.actionName[this.state]);
-        this.aniState.clip.islooping = true;
         this.animator.play(this.actionName[this.state]);
     }
 }
